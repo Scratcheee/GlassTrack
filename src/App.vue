@@ -5,9 +5,12 @@ import { supabase } from './lib/supabaseClient'
 import { storeToRefs } from 'pinia'
 import EntryForm from './components/EntryForm.vue'
 import InventoryStore from './components/InventoryTable.vue'
+import InventoryTable from './components/InventoryTable.vue';
+import InventoryTotals from './components/InventoryTotals.vue';
 
 
 const inventoryStore = useInventoryStore()
+const screen = ref('totals')
 
 
 
@@ -33,14 +36,16 @@ onMounted(() => {
 <template>
   <main>
     <div v-if="!inventoryStore.isLoading">
-     <EntryForm />
-     <inventoryStore />
+      <button @click="screen = 'entry'">Entry Page</button>
+      <button @click="screen = 'inventory'">Inventory Page</button>
+      <button @click="screen = 'totals'">Inventory Totals Page</button>
+
+
+     <EntryForm v-if="screen === 'entry'" />
+     <inventoryStore v-if="screen === 'inventory'" />
+     <InventoryTotals v-if="screen === 'totals'" />
     
 
-
-      <!-- <button @click="handleSqFt('1/8 Clear')">1/8 clear</button>
-
-      {{ inventoryStore.sqFeet }} -->
     </div>
     <div v-else>
       <div v-if="inventoryStore.errorMsg">
@@ -54,9 +59,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
+
 
 .logo {
   display: block;
@@ -64,20 +67,19 @@ header {
 }
 
 @media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+  button {
+  padding: 10px;
+  background-color: #8ee4af;
+  color: #101010;
+  border: none;
+  cursor: pointer;
+}
+
+/* Hover effect for the submit button */
+button:hover {
+  background-color: #56cb83;
+}
 }
 </style>

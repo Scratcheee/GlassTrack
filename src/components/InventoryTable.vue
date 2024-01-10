@@ -7,6 +7,7 @@
             <th>Width</th>
             <th>Type</th>
             <th>Quantity</th>
+            <th>Notes</th>
             <th>Square Footage</th>
           </tr>
         </thead>
@@ -16,6 +17,7 @@
             <td>{{ entry.width }} IN</td>
             <td>{{ entry.type }}</td>
             <td>{{ entry.qty }}</td>
+            <td>{{ entry.notes }}</td>
             <td>{{ Math.floor((entry.height * entry.width) / 144 * entry.qty) }} FT</td>
             <td><button @click="handleDelete(entry)">delete</button></td>
             <td><button @click="handleQtyChange(entry, -1)">-</button></td>
