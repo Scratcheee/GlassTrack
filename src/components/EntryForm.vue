@@ -41,11 +41,11 @@ import { ref, onMounted, computed } from 'vue'
 import { useInventoryStore } from '../stores/inventory';
 
 
-const height = ref(0)
-const width = ref(0)
+const height = ref()
+const width = ref()
 const thickness = ref('')
 const type = ref('')
-const qty = ref(0)
+const qty = ref()
 const notes = ref('')
 const inventoryStore = useInventoryStore()
 

@@ -10,7 +10,7 @@ import InventoryTotals from './components/InventoryTotals.vue';
 
 
 const inventoryStore = useInventoryStore()
-const screen = ref('totals')
+const screen = ref('entry')
 
 
 
